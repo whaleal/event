@@ -4,13 +4,23 @@ import java.util.Map;
 
 /**
  * 抽象的 Event
- * @author wh
  *
+ * @author wh
  */
 public abstract class AbstractEvent< T > implements Event< T > {
+    private static final long serialVersionUID = 2022075349620653480L;
 
     private Map< String, Object > headers;
     private T body;
+
+    protected AbstractEvent() {
+    }
+
+    protected AbstractEvent( Map< String, Object > headers ) {
+        if (headers != null) {
+            this.headers = headers;
+        }
+    }
 
     @Override
     public Map< String, Object > getHeaders() {
@@ -31,9 +41,11 @@ public abstract class AbstractEvent< T > implements Event< T > {
 
     @Override
     public void setBody( T body ) {
-        if(body!=null){
-            this.body = body;
-        }
+        if (body == null)
+            throw new IllegalArgumentException("null body");
+
+        this.body = body;
+
 
     }
 

@@ -1,17 +1,25 @@
 package com.whaleal.event;
 
 import java.util.Collection;
+import java.util.Map;
 
 /**
  * @author wh
  */
-public abstract class AbstractBatchEvent<T extends Collection<E>,E>  extends AbstractEvent< T >{
+public abstract class AbstractBatchEvent< T extends Collection< E >, E > extends AbstractEvent< T > {
 
+    protected AbstractBatchEvent() {
+        super();
+    }
 
-    public int size(){
-        if(super.getBody()!=null){
+    protected AbstractBatchEvent( Map< String, Object > headers ) {
+        super(headers);
+    }
+
+    public int size() {
+        if (super.getBody() != null) {
             return super.getBody().size();
-        }else {
+        } else {
             return 0;
         }
     }

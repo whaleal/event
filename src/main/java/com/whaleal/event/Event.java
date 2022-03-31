@@ -8,7 +8,7 @@ import java.util.Map;
  *
  * @author wh
  */
-public interface Event< T > {
+public interface Event< T > extends java.io.Serializable {
 
     /**
      * Returns a map of name-value pairs describing the data stored in the body.

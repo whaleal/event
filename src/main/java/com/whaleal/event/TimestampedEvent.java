@@ -1,43 +1,51 @@
 package com.whaleal.event;
 
 
-import com.whaleal.event.util.StrUtil;
-
-import java.util.HashMap;
 import java.util.Map;
 
 /**
  * {@link Event} implementation that has a timestamp.
  * The timestamp is taken from (in order of precedence):<ol>
- * <li>The "timestamp" header of the base event, if present</li>
- * <li>The "@timestamp" header of the base event, if present</li>
+ *
  * <li>The current time in millis, otherwise</li>
  * </ol>
  *
  * @author wh
  */
-public class TimestampedEvent< T > extends AbstractEvent< T > {
+public abstract class TimestampedEvent< T > extends AbstractEvent< T > {
 
+
+    /**
+     * System  create time
+     */
     private final long timestamp;
 
-    TimestampedEvent( Event< T > base ) {
-        setBody(base.getBody());
-        Map< String, Object > headers = new HashMap<>(base.getHeaders());
-        String timestampString = (String) headers.get("timestamp");
-        if (StrUtil.isBlank(timestampString)) {
-            timestampString = (String) headers.get("@timestamp");
-        }
-        if (StrUtil.isBlank(timestampString)) {
-            this.timestamp = System.currentTimeMillis();
-            headers.put("timestamp", String.valueOf(timestamp));
-        } else {
-            this.timestamp = Long.valueOf(timestampString);
-        }
-        setHeaders(headers);
+
+    /**
+     * Customer defined time
+     */
+    private long watermark;
+
+    protected TimestampedEvent() {
+        super();
+        this.timestamp = System.currentTimeMillis();
     }
 
-    long getTimestamp() {
+    protected TimestampedEvent( Map< String, Object > headers ) {
+        super(headers);
+        this.timestamp = System.currentTimeMillis();
+    }
+
+    public long getTimestamp() {
         return this.timestamp;
+    }
+
+    public long getWatermark() {
+        return watermark;
+    }
+
+    public void setWatermark( long watermark ) {
+        this.watermark = watermark;
     }
 
 
