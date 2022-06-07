@@ -19,7 +19,7 @@
 		<img src="https://img.shields.io/badge/JDK-8+-green.svg" />
 	</a>
 	<a target="_blank" href='https://github.com/whaleal/event'>
-		<img src="https://img.shields.io/github/stars/whaleal/evnet.svg?style=social" alt="github star"/>
+		<img src="https://img.shields.io/github/stars/whaleal/event.svg?style=social" alt="github star"/>
 	</a>
 </p>
 
