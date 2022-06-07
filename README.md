@@ -183,5 +183,6 @@ event欢迎任何人为event添砖加瓦，贡献代码，不过维护者是一�
 
 
 
-
-![whaleal](https://github.com/whaleal/whaleal.github.io/blob/main/images/logo1.png)
+<p align="center">
+	<a href="https://whaleal.com/"><img src="https://docs.whaleal.com/images/logo1.png" width="45%"></a>
+</p>
