@@ -2,11 +2,11 @@ package com.whaleal.event;
 
 
 /**
- * a simple Event with String type
+ * a simple Event with customer type
  *
  * @author wh
  */
-public class SimpleEvent extends AbstractEvent< String > {
+public class SimpleEvent<T> extends AbstractEvent< T >{
 
 
 }

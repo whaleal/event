@@ -1,7 +1,6 @@
 package com.whaleal.event;
 
-import java.nio.charset.Charset;
-import java.util.HashMap;
+
 import java.util.Map;
 
 /**
@@ -9,7 +8,11 @@ import java.util.Map;
  *
  * @author wh
  */
-public class EventBuilder {
+public class EventBuilder< T > {
+
+
+    private T body;
+    private Map< String, Object > headers;
 
     /**
      * Instantiate an Event instance based on the provided body and headers.
@@ -19,34 +22,35 @@ public class EventBuilder {
      * @param headers
      * @return
      */
-    public static Event< String > withBody( String body, Map< String, String > headers ) {
-        Event event = new SimpleEvent();
+    public EventBuilder< T > withBody( T body, Map< String, Object > headers ) {
+        this.body = body;
+        this.headers = headers;
+        return this;
+    }
 
-        event.setBody(body);
+    public EventBuilder< T > withBody( T body ) {
+        this.body = body;
+        return this;
+    }
 
-        if (headers != null) {
-            event.setHeaders(new HashMap< String, String >(headers));
+    public EventBuilder< T > withHeader( Map< String, Object > headers ) {
+        this.headers = headers;
+        return this;
+    }
+
+
+    public Event< T > build() {
+        Event< T > event = new SimpleEvent< T >();
+
+        event.setBody(this.body);
+
+        if (this.headers != null) {
+            event.setHeaders(headers);
         }
 
         return event;
+
     }
 
-    public static Event< String > withBody( String body ) {
-        return withBody(body, (Map) null);
-    }
-
-    public static Event< String > withBody( String body, Charset charset,
-                                            Map< String, String > headers ) {
-
-        if (body != null) {
-            body = new String(body.getBytes(charset));
-        }
-
-        return withBody(body, headers);
-    }
-
-    public static Event withBody( String body, Charset charset ) {
-        return withBody(body, charset, null);
-    }
 
 }
