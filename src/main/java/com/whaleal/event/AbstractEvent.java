@@ -10,8 +10,8 @@ import java.util.Map;
 public abstract class AbstractEvent< T > implements Event< T > {
     private static final long serialVersionUID = 2022075349620653480L;
 
-    private Map< String, Object > headers;
-    private T body;
+    protected Map< String, Object > headers;
+    protected T body;
 
     protected AbstractEvent() {
     }
@@ -41,11 +41,7 @@ public abstract class AbstractEvent< T > implements Event< T > {
 
     @Override
     public void setBody( T body ) {
-        if (body == null)
-            throw new IllegalArgumentException("null body");
-
         this.body = body;
-
 
     }
 
@@ -53,5 +49,24 @@ public abstract class AbstractEvent< T > implements Event< T > {
     @Override
     public String toString() {
         return "[Event headers = " + headers + ", body = " + body + " ]";
+    }
+
+    /**
+     * destroy method
+     * 当一个event 比较大时
+     * 我们希望重复利用也好，快速销毁也好
+     * 因此添加将body  置为空的方法
+     * 以便于body部分 快速被重置
+     * 而header 现阶段不考虑。
+     *
+     */
+    @Override
+    public void destroy() {
+
+        if (this.body != null) {
+
+            this.body = null;
+        }
+
     }
 }

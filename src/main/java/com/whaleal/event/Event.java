@@ -34,4 +34,7 @@ public interface Event< T > extends java.io.Serializable {
      */
     void setBody( T body );
 
+
+    void destroy();
+
 }

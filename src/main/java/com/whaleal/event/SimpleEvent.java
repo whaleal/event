@@ -6,7 +6,7 @@ package com.whaleal.event;
  *
  * @author wh
  */
-public class SimpleEvent<T> extends AbstractEvent< T >{
+public class SimpleEvent< T > extends AbstractEvent< T > {
 
 
 }

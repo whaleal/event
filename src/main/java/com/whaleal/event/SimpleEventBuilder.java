@@ -8,7 +8,7 @@ import java.util.Map;
  *
  * @author wh
  */
-public class EventBuilder< T > {
+public class SimpleEventBuilder< T > {
 
 
     private T body;
@@ -22,31 +22,30 @@ public class EventBuilder< T > {
      * @param headers
      * @return
      */
-    public EventBuilder< T > withBody( T body, Map< String, Object > headers ) {
+    public SimpleEventBuilder< T > withBody( T body, Map< String, Object > headers ) {
         this.body = body;
         this.headers = headers;
         return this;
     }
 
-    public EventBuilder< T > withBody( T body ) {
+    public SimpleEventBuilder< T > withBody( T body ) {
         this.body = body;
         return this;
     }
 
-    public EventBuilder< T > withHeader( Map< String, Object > headers ) {
+    public SimpleEventBuilder< T > withHeader( Map< String, Object > headers ) {
         this.headers = headers;
         return this;
     }
 
 
-    public Event< T > build() {
-        Event< T > event = new SimpleEvent< T >();
+    public SimpleEvent< T > build() {
+        SimpleEvent< T > event = new SimpleEvent< T >();
 
         event.setBody(this.body);
 
-        if (this.headers != null) {
-            event.setHeaders(headers);
-        }
+
+        event.setHeaders(headers);
 
         return event;
 

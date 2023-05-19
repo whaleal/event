@@ -12,11 +12,11 @@ import java.util.Map;
  *
  * @author wh
  */
-public abstract class TimestampedEvent< T > extends AbstractEvent< T > {
-
+public class TimestampedEvent< T > extends AbstractEvent< T > {
 
     /**
      * System  create time
+     * 比选后选择 System.currentTimeMillis(); 来生成该值;
      */
     private final long timestamp;
 
@@ -46,6 +46,12 @@ public abstract class TimestampedEvent< T > extends AbstractEvent< T > {
 
     public void setWatermark( long watermark ) {
         this.watermark = watermark;
+    }
+
+
+    @Override
+    public String toString() {
+        return "[Event headers = " + super.headers + ", body = " + super.body + ", timestamp = " + timestamp + ", watermark = " + watermark + " ]";
     }
 
 

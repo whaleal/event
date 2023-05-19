@@ -23,4 +23,19 @@ public abstract class AbstractBatchEvent< T extends Collection< E >, E > extends
             return 0;
         }
     }
+
+    /**
+     * @param element
+     * @return
+     * @throws EventException
+     */
+    public boolean add( E element ) throws EventException {
+        try {
+            return super.body.add(element);
+        } catch (Exception e) {
+            throw new EventException(e.getMessage(), e);
+        }
+
+
+    }
 }

@@ -6,23 +6,23 @@ package com.whaleal.event;
  *
  * @author wh
  */
-public class EventDeliveryException extends Exception {
+public class EventException extends Exception {
 
     private static final long serialVersionUID = 1102327497549834945L;
 
-    public EventDeliveryException() {
+    public EventException() {
         super();
     }
 
-    public EventDeliveryException( String message ) {
+    public EventException( String message ) {
         super(message);
     }
 
-    public EventDeliveryException( String message, Throwable t ) {
+    public EventException( String message, Throwable t ) {
         super(message, t);
     }
 
-    public EventDeliveryException( Throwable t ) {
+    public EventException( Throwable t ) {
         super(t);
     }
 
