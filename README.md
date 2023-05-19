@@ -103,7 +103,7 @@ event的存在就是为了减少代码搜索成本，避免网络上参差不齐
 <dependency>
     <groupId>com.whaleal</groupId>
     <artifactId>event</artifactId>
-    <version>0.1.0</version>
+    <version>0.5.0</version>
 </dependency>
 ```
 
