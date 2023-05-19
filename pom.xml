@@ -7,6 +7,10 @@
     <groupId>com.whaleal</groupId>
     <artifactId>event</artifactId>
     <version>0.5.0</version>
+    <name>Event</name>
+    <description>Event package for your app</description>
+    <url>https://github.com/whaleal/event</url>
+
 
     <!--发布的标准，这个是按照whaleal 项目内部的标准的标准来做的-->
     <licenses>
