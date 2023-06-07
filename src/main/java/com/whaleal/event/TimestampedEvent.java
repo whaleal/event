@@ -26,12 +26,12 @@ public class TimestampedEvent< T > extends AbstractEvent< T > {
      */
     private long watermark;
 
-    protected TimestampedEvent() {
+    public TimestampedEvent() {
         super();
         this.timestamp = System.currentTimeMillis();
     }
 
-    protected TimestampedEvent( Map< String, Object > headers ) {
+    public TimestampedEvent( Map< String, ? > headers ) {
         super(headers);
         this.timestamp = System.currentTimeMillis();
     }
@@ -51,7 +51,7 @@ public class TimestampedEvent< T > extends AbstractEvent< T > {
 
     @Override
     public String toString() {
-        return "[Event headers = " + super.headers + ", body = " + super.body + ", timestamp = " + timestamp + ", watermark = " + watermark + " ]";
+        return "[Event headers = " + super.getHeaders() + ", body = " + super.getBody() + ", timestamp = " + timestamp + ", watermark = " + watermark + " ]";
     }
 
 

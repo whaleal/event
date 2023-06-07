@@ -16,7 +16,7 @@ public class BatchEvent< E > extends AbstractBatchEvent< Collection< E >, E > {
         super();
     }
 
-    public BatchEvent( Map< String, Object > headers ) {
+    public BatchEvent( Map< String, ? > headers ) {
         super(headers);
     }
 

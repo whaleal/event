@@ -12,7 +12,7 @@ public class SimpleEventBuilder< T > {
 
 
     private T body;
-    private Map< String, Object > headers;
+    private Map< String, ? > headers;
 
     /**
      * Instantiate an Event instance based on the provided body and headers.
@@ -22,7 +22,7 @@ public class SimpleEventBuilder< T > {
      * @param headers
      * @return
      */
-    public SimpleEventBuilder< T > withBody( T body, Map< String, Object > headers ) {
+    public SimpleEventBuilder< T > withBody( T body, Map< String, ? > headers ) {
         this.body = body;
         this.headers = headers;
         return this;
@@ -33,7 +33,7 @@ public class SimpleEventBuilder< T > {
         return this;
     }
 
-    public SimpleEventBuilder< T > withHeader( Map< String, Object > headers ) {
+    public SimpleEventBuilder< T > withHeader( Map< String, ? > headers ) {
         this.headers = headers;
         return this;
     }

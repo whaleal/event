@@ -1,5 +1,6 @@
 package com.whaleal.event;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -10,15 +11,16 @@ import java.util.Map;
 public abstract class AbstractEvent< T > implements Event< T > {
     private static final long serialVersionUID = 2022075349620653480L;
 
-    protected Map< String, Object > headers;
-    protected T body;
+    private Map< String, Object > headers;
+    private T body;
 
     protected AbstractEvent() {
     }
 
-    protected AbstractEvent( Map< String, Object > headers ) {
+    protected AbstractEvent( Map< String, ? > headers ) {
         if (headers != null) {
-            this.headers = headers;
+            this.headers = new LinkedHashMap<>(headers);
+
         }
     }
 
@@ -28,9 +30,9 @@ public abstract class AbstractEvent< T > implements Event< T > {
     }
 
     @Override
-    public void setHeaders( Map< String, Object > headers ) {
+    public void setHeaders( Map< String, ? > headers ) {
         if (headers != null) {
-            this.headers = headers;
+            this.headers = new LinkedHashMap<>(headers);
         }
     }
 
@@ -58,7 +60,6 @@ public abstract class AbstractEvent< T > implements Event< T > {
      * 因此添加将body  置为空的方法
      * 以便于body部分 快速被重置
      * 而header 现阶段不考虑。
-     *
      */
     @Override
     public void destroy() {

@@ -6,7 +6,7 @@
 
     <groupId>com.whaleal</groupId>
     <artifactId>event</artifactId>
-    <version>0.5.0</version>
+    <version>0.6.0</version>
     <name>Event</name>
     <description>Event package for your app</description>
     <url>https://github.com/whaleal/event</url>

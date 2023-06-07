@@ -20,7 +20,7 @@ public interface Event< T > extends java.io.Serializable {
      *
      * @param headers Map of headers to replace the current headers.
      */
-    void setHeaders( Map< String, Object > headers );
+    void setHeaders( Map< String, ? > headers );
 
     /**
      * Returns the raw byte array of the data contained in this event.

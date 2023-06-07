@@ -12,8 +12,9 @@ public abstract class AbstractBatchEvent< T extends Collection< E >, E > extends
         super();
     }
 
-    protected AbstractBatchEvent( Map< String, Object > headers ) {
+    protected AbstractBatchEvent( Map< String, ? > headers ) {
         super(headers);
+
     }
 
     public int size() {
@@ -31,7 +32,12 @@ public abstract class AbstractBatchEvent< T extends Collection< E >, E > extends
      */
     public boolean add( E element ) throws EventException {
         try {
-            return super.body.add(element);
+            if (super.getBody() != null) {
+                return super.getBody().add(element);
+            } else {
+                throw new EventException("Body can't be null in event when you use BatchEvent");
+            }
+
         } catch (Exception e) {
             throw new EventException(e.getMessage(), e);
         }

@@ -5,9 +5,9 @@ import java.util.Map;
 /**
  * an Empty Event .Used for sending  message
  * <p>
- * 空消息 ，表示结束
- * 消息 体 为空
- * 但是可以设置 header
+ * Empty message , indicating the end
+ * message body is empty
+ * But headers can be set
  *
  * @author wh
  */
@@ -17,7 +17,7 @@ public class EmptyEvent extends AbstractEvent< Void > {
         super();
     }
 
-    private EmptyEvent( Map< String, Object > headers ) {
+    private EmptyEvent( Map< String, ? > headers ) {
         super(headers);
     }
 
@@ -25,7 +25,7 @@ public class EmptyEvent extends AbstractEvent< Void > {
         return new EmptyEvent();
     }
 
-    public static EmptyEvent create( Map< String, Object > headers ) {
+    public static EmptyEvent create( Map< String, ? > headers ) {
         return new EmptyEvent(headers);
     }
 
